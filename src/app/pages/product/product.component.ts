@@ -11,11 +11,14 @@ export class ProductComponent implements OnInit{
   constructor(private httpClient: HttpClient){
 
   }
-  ngOnInit(): void {
-    this.getProducts();
-  }
-  getProducts(){
-    const response = this.httpClient.get('http//api.escuelajs.co/api/v1/products');
+  getProducts(): void {
+    const response = this.httpClient.get("https://api.escuelajs.co/api/v1/products").subscribe(response => {
+      console.log(response);
+    })
+    console.log(response);
   }
 
-}
+  ngOnInit(): void {
+    this.getProducts();
+  };
+};
